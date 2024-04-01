@@ -1,5 +1,6 @@
 use csv;
 use std::error::Error;
+use std::env::args;
 
 fn read_from_file(path: &str) -> Result<(), Box<dyn Error>>{
     let mut reader = csv::Reader::from_path(path)?;
@@ -13,6 +14,11 @@ fn read_from_file(path: &str) -> Result<(), Box<dyn Error>>{
 }
 
 fn main() {
+    let args: Vec<String> = args().collect();
+    if args.len() < 2 {
+        eprintln!("Please provide a file path");
+        std::process::exit(1);
+    }
     if let Err(e) = read_from_file("data.csv") {
         eprintln!("Error reading file: {}", e);
     }
