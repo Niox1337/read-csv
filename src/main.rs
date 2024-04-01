@@ -7,9 +7,9 @@ fn read_from_file(path: &str) -> Result<(), Box<dyn Error>>{
 
     for result in reader.records() {
         let record = result?;
-
         println!("{:?}", record)
     }
+
     Ok(())
 }
 
