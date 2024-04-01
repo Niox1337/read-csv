@@ -19,7 +19,9 @@ fn main() {
         eprintln!("Please provide a file path");
         std::process::exit(1);
     }
-    if let Err(e) = read_from_file("data.csv") {
+
+    let file_path = &args[1];
+    if let Err(e) = read_from_file(file_path) {
         eprintln!("Error reading file: {}", e);
     }
 }
